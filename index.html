@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My Polar & City Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; }
+    .popup-img { width: 240px; border-radius: 8px; }
+    .popup-title { font-weight: bold; font-size: 16px; }
+    .popup-caption { font-size: 14px; color: #444; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map').setView([66.95, -50.94], 3); // グリーンランド中心
+
+  // タイル（シンプルな地図）
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const points = [
+    {
+      title: "イルリサット氷河",
+      lat: 69.217, lng: -51.100,
+      comment: "まるで空に浮かぶ彫刻のような氷河",
+      image: "img/ilulissat.jpg"
+    },
+    {
+      title: "エキュモ氷河（Qaanaaq近郊）",
+      lat: 77.467, lng: -69.233,
+      comment: "フィールド調査で訪れた美しい湾。静寂の中に鳴る氷の音。",
+      image: "img/eqip.jpg"
+    },
+    {
+      title: "東京スカイツリー",
+      lat: 35.710, lng: 139.8107,
+      comment: "ライトアップが川面に映って幻想的。",
+      image: "img/skytree.jpg"
+    },
+    {
+      title: "六本木ヒルズ展望台",
+      lat: 35.6605, lng: 139.7294,
+      comment: "高層ビルの隙間から月が昇る瞬間が最高。",
+      image: "img/roppongi.jpg"
+    }
+  ];
+
+  points.forEach(p => {
+    const popupContent = `<div class='popup-title'>${p.title}</div>
+                          <div class='popup-caption'>${p.comment}</div>
+                          <img src="${p.image}" class="popup-img">`;
+    L.marker([p.lat, p.lng]).addTo(map).bindPopup(popupContent);
+  });
+</script>
+</body>
+</html>
