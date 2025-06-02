@@ -1,0 +1,18 @@
+{
+  "points": [
+    {
+      "title": "函館山",
+      "lat": 41.7688,
+      "lng": 140.7288,
+      "comment": "夕焼けがすごかった！",
+      "image": "img/hakodate.jpg"
+    },
+    {
+      "title": "知床岬",
+      "lat": 44.1659,
+      "lng": 145.2144,
+      "comment": "クマには会わなかった",
+      "image": "img/shiretoko.jpg"
+    }
+  ]
+}
